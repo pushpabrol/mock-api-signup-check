@@ -50,11 +50,9 @@ app.post('/check-exists', (req, res) => {
     );
   });
 
-  if (exists) {
-    return res.status(200).json({ message: 'Combination exists.' });
-  }
 
-  res.status(404).json({ message: 'Combination does not exist.' });
+    return res.status(200).json({ exists });
+
 });
 
 app.listen(port, () => {
