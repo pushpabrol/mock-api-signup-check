@@ -39,7 +39,7 @@ app.use(bodyParser.json());
 app.post('/check-exists', (req, res) => {
   const { lastName, dob } = req.body;
 
-  if (!lastName || !dob || !ssnLast4) {
+  if (!lastName || !dob) {
     return res.status(400).json({ message: 'Please provide all required fields.' });
   }
 
