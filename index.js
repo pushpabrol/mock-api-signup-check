@@ -25,6 +25,7 @@ const mockData = [
     { lastName: 'Turner', dob: '1993-05-02', ssnLast4: '2109' },
     { lastName: 'Perez', dob: '1986-11-28', ssnLast4: '6543' },
     { lastName: 'Wright', dob: '1994-12-15', ssnLast4: '8901' },
+    // ... Repeat similar entries to reach 100
   ];
   
   // Example usage:
@@ -36,7 +37,7 @@ app.use(bodyParser.json());
 
 // POST endpoint to check if the combination exists
 app.post('/check-exists', (req, res) => {
-  const { lastName, dob, ssnLast4 } = req.body;
+  const { lastName, dob } = req.body;
 
   if (!lastName || !dob || !ssnLast4) {
     return res.status(400).json({ message: 'Please provide all required fields.' });
@@ -45,8 +46,7 @@ app.post('/check-exists', (req, res) => {
   const exists = mockData.some((data) => {
     return (
       data.lastName === lastName &&
-      data.dob === dob &&
-      data.ssnLast4 === ssnLast4
+      data.dob === dob 
     );
   });
 
